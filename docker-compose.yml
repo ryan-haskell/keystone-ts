@@ -1,0 +1,21 @@
+version: '3'
+services:
+
+  db:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+
+  # web:
+  #   image: ryannhg/keystone-ts
+  #   build: 
+  #     context: ./
+  #     dockerfile: Dockerfile
+  #   command: npm run dev
+  #   links:
+  #     - mongo
+  #   ports:
+  #     - 3000:3000
+  #   volumes:
+  #     - ./src:/usr/src/app/src
+  #     - ./node_modules:/usr/src/app/node_modules

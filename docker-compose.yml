@@ -3,19 +3,20 @@ services:
 
   db:
     image: mongo:latest
-    ports:
-      - 27017:27017
 
-  # web:
-  #   image: ryannhg/keystone-ts
-  #   build: 
-  #     context: ./
-  #     dockerfile: Dockerfile
-  #   command: npm run dev
-  #   links:
-  #     - mongo
-  #   ports:
-  #     - 3000:3000
-  #   volumes:
-  #     - ./src:/usr/src/app/src
-  #     - ./node_modules:/usr/src/app/node_modules
+  web:
+    image: ryannhg/keystone-ts
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+    command: npm run dev
+    links:
+      - db
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src:/usr/src/app/src
+      - ./gulpfile.js:/usr/src/app/gulpfile.js
+      - ./tsconfig.json:/usr/src/app/tsconfig.json
+      - ./package.json:/usr/src/app/package.json
+      - ./package-lock.json:/usr/src/app/package-lock.json

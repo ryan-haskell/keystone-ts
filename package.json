@@ -4,8 +4,8 @@
   "description": "Keystone and Typescript",
   "main": "_dist/app.js",
   "scripts": {
-    "start": "node _dist/app.js",
-    "dev": "nodemon _dist/app.js"
+    "start": "gulp && node _dist/app.js",
+    "dev": "gulp && gulp dev & nodemon _dist/app.js"
   },
   "author": "Ryan Haskell-Glatz",
   "license": "ISC",

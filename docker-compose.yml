@@ -16,7 +16,8 @@ services:
       - 3000:3000
     volumes:
       - ./src:/usr/src/app/src
-      - ./gulpfile.js:/usr/src/app/gulpfile.js
       - ./tsconfig.json:/usr/src/app/tsconfig.json
+      - ./nodemon.json:/usr/src/app/nodemon.json
+      - ./gulpfile.js:/usr/src/app/gulpfile.js
       - ./package.json:/usr/src/app/package.json
       - ./package-lock.json:/usr/src/app/package-lock.json

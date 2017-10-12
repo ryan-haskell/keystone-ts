@@ -10,8 +10,15 @@ const pages = {
   home: (_req : Request, res : Response) : any =>
     res.render('home', locals({
       page: {
-        title: 'KeystoneJS',
-        subtitle: 'Maybe it isn\'t so awful...'
+        meta: {
+          title: 'KeystoneTS',
+          description: 'I bet you love life.'
+        },
+        hero: {
+          title: 'KeystoneJS',
+          subtitle: 'But with Typescript tho...',
+          buttonLabel: 'Tell me more.'
+        }
       }
     }))
 }

@@ -1,7 +1,5 @@
 .hero {
 
-    $color__dark-gray: #414141;
-
     padding: 10rem 0;
     background-color: $color__dark-gray;
     color: white;
@@ -17,6 +15,10 @@
     &__subtitle {
         font-size: 2rem;
         margin-top: 1rem;
+    }
+
+    &__button {
+        margin-top: 2rem;
     }
 
 }

@@ -1,13 +1,5 @@
 @import 'reset';
-
-body {
-    font-family: 'Lato', sans-serif;
-    font-weight: 300;
-}
-
-div {
-    box-sizing: border-box;
-}
+@import 'normalize';
 
 @import "variables/_manifest";
 @import 'blocks/_manifest';

@@ -3,9 +3,6 @@ const del = require('del')
 const ts = require('gulp-typescript')
 const sass = require('gulp-sass')
 const series = require('run-sequence')
-const browserify = require('browserify')
-const tsify = require('tsify')
-const source = require('vinyl-source-stream')
 
 
 const paths = {
@@ -24,6 +21,13 @@ const paths = {
     src: ['src/**/*.ts', '!src/scripts/**/*.ts'],
     dest: '_dist',
     project: ts.createProject('tsconfig.json')
+  },
+  frontend: {
+    entrypoint: 'src/scripts/main.ts',
+    src: 'src/scripts/**/*.ts',
+    dest: '_dist/public',
+    outFile: 'main.js',
+    project: ts.createProject('tsconfig.json')
   }
 }
 
@@ -40,23 +44,17 @@ gulp.task('typescript:watch', ['typescript'], () =>
 )
 
 // Frontend Typescript
-gulp.task('frontend', () =>
-  browserify({
-    basedir: '',
-    debug: true,
-    entries: ['./src/scripts/main.ts'],
-    cache: {},
-    packageCache: {}
-  })
-  .plugin(tsify)
-  .bundle()
-  .on('error', () => {})
-  .pipe(source('main.js'))
-  .pipe(gulp.dest('_dist/public'))
+gulp.task('frontend', () => gulp
+  .src(paths.frontend.entrypoint)
+  .pipe(paths.frontend.project({
+    outFile: paths.frontend.outFile
+  }))
+  .js
+  .pipe(gulp.dest(paths.frontend.dest))
 )
 
 gulp.task('frontend:watch', ['frontend'], () =>
-  gulp.watch('src/scripts/**/*.ts', ['frontend'])
+  gulp.watch(paths.frontend.src, ['frontend'])
 )
 
 // Pug
